@@ -1,152 +1,53 @@
-# match-my-cv
+# 🧠 AI CV–Job Matcher
 
-✨ Features
+An AI-powered tool that analyzes a candidate’s CV and compares their listed skills against multiple job descriptions using a large language model (Gemini). The system outputs structured insights including strengths, gaps, and improvement suggestions.
 
-Upload CV in Excel format
+This project is designed to run in **Google Colab**, so no local setup is required.
 
-Extract skills from the Skills section
+---
 
-Compare against multiple job descriptions
+## 🚀 Run in Google Colab
 
-Identify:
+Click below to open the notebook directly in Colab:
 
-Matching strengths
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/REPO_NAME/blob/main/NOTEBOOK_NAME.ipynb)
 
-Missing skills (gaps)
+---
 
-Improvement suggestions
+## ✨ Features
 
-Clean JSON output for automation and analysis
+- Upload CV in **Excel (.xlsx)** format  
+- Extracts skills from the *Skills* section  
+- Matches against multiple job descriptions  
+- Identifies:
+  - Strengths (matching skills)
+  - Weaknesses (missing skills)
+  - Suggestions (how to improve fit)
+- Structured **JSON output**
+- Secure API key handling using Colab secrets
 
-Uses Google Gemini API
+---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-Python
+- Python  
+- Google Colab  
+- Pandas  
+- Gemini LLM (`google.genai`)  
+- JSON, Regex  
 
-Google Colab
+---
 
-Pandas
+## 📂 Expected CV Format
 
-Gemini LLM (via google.genai)
+Your Excel file must include:
 
-JSON & Regex
+| Column  | Description |
+|--------|-------------|
+| Section | CV section name (e.g., Skills, Education) |
+| Details | Content for that section |
 
-🚀 How to Run in Google Colab
-1️⃣ Open Google Colab
+There must be a row where:
 
-Go to: https://colab.research.google.com
-
-Create a New Notebook.
-
-2️⃣ Install Required Libraries
-
-Run this in a Colab cell:
-
-!pip install pandas openpyxl google-generativeai
-
-3️⃣ Add Your Gemini API Key
-
-In Colab:
-
-Click on 🔒 Secrets (left sidebar)
-
-Add a new secret:
-
-Name: GEMINI_API_KEY
-
-Value: your API key
-
-Your code will automatically load it using:
-
-from google.colab import userdata
-API_KEY = userdata.get("GEMINI_API_KEY")
-
-4️⃣ Upload Your CV File
-
-Your CV must be in Excel format (.xlsx) and contain:
-
-A column named Section
-
-A column named Details
-
-A row where Section = "Skills"
-
-Example:
-
-Section	Details
-Skills	Python, Machine Learning, Data Analysis
-
-Upload the file when prompted:
-
-from google.colab import files
-uploaded = files.upload()
-
-5️⃣ Run the Script
-
-Execute the notebook cells. The program will:
-
-Read the uploaded Excel file
-
-Extract skills from the Skills section
-
-Compare them against predefined job descriptions
-
-Output:
-
-Candidate skills
-
-Strengths per job
-
-Weaknesses (missing skills)
-
-Suggestions
-
-📤 Output Example
-Candidate Skills: ['Python', 'Machine Learning', 'Pandas']
-
-Job ID: desc1
-Strengths: Python, Machine Learning
-Weaknesses: patent analysis, NLP, AI frameworks
-Suggestions: Learn NLP for document analysis, explore patent analytics tools
-
-📁 Expected File Format
-
-Your Excel CV must include:
-
-Column: Section
-
-Column: Details
-
-A row with Section = Skills
-
-If the "Skills" row is missing, the script will stop with an error.
-
-🔒 Notes on Data Privacy
-
-Your CV is processed only within your Colab session.
-
-No files are stored after the session ends.
-
-API calls are made securely using your own Gemini API key.
-
-📌 Future Improvements
-
-Add UI / Web interface
-
-Support PDF and DOCX CVs
-
-Scoring system for job fit
-
-Batch processing of multiple CVs
-
-Visualization of skill gaps
-
-📄 License
-
-This project is open-source. You may use, modify, and distribute it with attribution.
-
-🤝 Contributing
-
-Pull requests and suggestions are welcome!
-If you find bugs or want to extend functionality, feel free to open an issue.
+```text
+Section = Skills
